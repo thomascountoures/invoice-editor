@@ -1,0 +1,5 @@
+# ignore huge files
+node_modules/
+
+#vs code related
+package-lock.json
