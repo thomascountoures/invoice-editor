@@ -31,14 +31,17 @@ Write Tests using the test framework of your choice
 Part 4:
 Make it beautiful and mobile responsive
 
-## H2
-Additional comments by Thomas:
+## Additional comments by Thomas
 
 To run:
 
+```
 npm install
 npm start
+```
 
 To test:
 
+```
 npm test
+```
