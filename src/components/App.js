@@ -11,15 +11,6 @@ class App extends Component {
   
   constructor(props) {
     super(props);
-
-    this.state = {
-      itemInfo: {
-        itemName: '',
-        quantity: '',
-        price: '',
-        total: ''
-      }
-    }
   }
 
   render() {
@@ -30,9 +21,11 @@ class App extends Component {
           <h2>Welcome to Invoice Editor</h2>
         </div>
         
-        { /* Insert your code here */}
-        <InvoiceTable 
-          onInputChange={itemInfo => this.setState({ itemInfo })}/>        
+        { /* base container and app */ }
+        <div className="container">        
+          <InvoiceTable />       
+        </div>
+         
       </div>
     );
   }

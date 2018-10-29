@@ -1,40 +1,23 @@
 import React, { Component } from 'react';
 
-class InvoiceTotals extends Component {
-    
-    constructor(props) {
-        super(props);
-    }
+import Helpers from '../helpers/helpers';
 
-    calculateTotals() {
-        let subTotal = 0;
-        let tax;
-        let grandTotal;
-        for(var i = 0, length = this.props.items.length; i < length; i++) {
-            subTotal += Number(this.props.items[i].total);
-        }
+import '../css/invoice_totals.css'
 
-        tax = subTotal * 0.05;
-        grandTotal = subTotal + tax;
+/**
+ * Invoice totals component
+ * 
+ * Relies on item props to calculate toals
+ */
 
-        return {
-            subTotal: this.props.roundTwoDecimals(subTotal) || 0.00,
-            tax: this.props.roundTwoDecimals(tax) || 0.00,
-            grandTotal: this.props.roundTwoDecimals(grandTotal) || 0.00
-        }
-    
-    }
-
-    render() {
-        return (
-            <div id="totals">
-                <div className="subtotal">Subtotal: ${this.calculateTotals().subTotal}</div>
-                <div className="tax">Tax: ${this.calculateTotals().tax}</div>
-                <div className="grandtotal">Grand Total: ${this.calculateTotals().grandTotal}</div>
-            </div>
-        )
-    };
-
+const InvoiceTotals = (props) => {
+    return (
+        <div id="totals" className="">
+            <div className="subtotal">Subtotal: ${Helpers.calculateTotals(props.items).subTotal}</div>
+            <div className="tax">Tax (5%): ${Helpers.calculateTotals(props.items).tax}</div>
+            <div className="grandtotal">Grand Total: ${Helpers.calculateTotals(props.items).grandTotal}</div>
+        </div>
+    );
 };
 
 export default InvoiceTotals;
