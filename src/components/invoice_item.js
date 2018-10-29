@@ -13,8 +13,8 @@ const InvoiceItem = (props) => {
     return (
         <tr className="invoice-item">
             <td>
-                { /* create onChange event to handle user input inside input tag. 
-                update state based on userInput. */ }
+                { /* each input calls handleUpdateItem (except total) 
+                on its change event to update the overall items state. */ }                
                 <input 
                     type="text" 
                     className="item-name"
@@ -27,8 +27,7 @@ const InvoiceItem = (props) => {
                     }
                     />
             </td>
-            <td>
-                { /* for quantity and price, we need an event to update the item's total */ }
+            <td>                
                 <input 
                     type="number" 
                     className="item-quantity" 

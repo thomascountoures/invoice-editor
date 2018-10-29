@@ -89,8 +89,19 @@ class InvoiceTable extends Component {
 
         // if there is only one item in the array,
         // there will be no more items left once removed.
+        // clear data and reset items back to 1, as it's
+        // better than having an empty table
         if(itemsClone.length === 1) {
-            this.setState({ items: [] });
+            this.setState({ 
+                items: [
+                    {
+                        name: "",
+                        quantity: 0,
+                        price: 0,
+                        total: 0
+                    }
+                ] 
+            });
         } else {
             // else, remove item from array.
             itemsClone.splice(key, 1);
