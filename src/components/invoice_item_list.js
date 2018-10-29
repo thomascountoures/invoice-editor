@@ -9,7 +9,17 @@ import InvoiceItem from './invoice_item';
 class InvoiceItemList extends Component {
 
     constructor(props) {
-        super(props);        
+        super(props);  
+        
+        this.addNewItem = this.addNewItem.bind(this);
+    }
+
+    addNewItem() {
+        // not sure, but I don't want to change the original item
+        // props property here. yes. 'props property'. it sounds cool.
+        let itemsClone = this.props.items;
+        itemsClone.push({ name: "", quantity: 0, price: 0, total: 0 })
+        this.props.handleAddItem(itemsClone)
     }
 
     render() {
@@ -41,15 +51,7 @@ class InvoiceItemList extends Component {
                 {items}
                 {/* add new invoice button. creates a clone of this.props.items,
                 modifies it, and sets the new state. */}
-                <button className="btn btn-primary" onClick={ 
-                    () => {
-                        // not sure, but I don't want to change the original item
-                        // props property here. yes. 'props property'. it sounds cool.
-                        let itemsClone = this.props.items;
-                        itemsClone.push({ name: "", quantity: 0, price: 0, total: 0 })
-                        this.props.handleAddItem(itemsClone)
-                    } 
-                }>Add new item</button>
+                <button className="btn btn-primary" onClick={this.addNewItem}>Add new item</button>
             </tbody>
         );
     }

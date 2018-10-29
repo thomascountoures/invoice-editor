@@ -40,7 +40,7 @@ describe('<InvoiceTable />', () => {
         const thead = shallow(<InvoiceTable />);
         expect(table.find('table').length).toEqual(1);
         expect(thead.find('thead').length).toEqual(1);        
-    })
+    });
 });
 
 // unit test rounding two decimals

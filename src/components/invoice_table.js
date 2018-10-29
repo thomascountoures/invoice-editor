@@ -105,8 +105,8 @@ class InvoiceTable extends Component {
     render () {
         return (
             <div className="table-responsive">
-                <table className="table table-dark">
-                    <thead>
+                <table className="table table-borderless">
+                    <thead className="thead-dark">
                         <tr>
                             <th>Item</th>
                             <th>Quantity</th>
@@ -117,7 +117,11 @@ class InvoiceTable extends Component {
                     
                     { /* invoice row component */ }
 
-                    { /* handleU */}
+                    { /* handleUpdateItem, handleAddItem and handleRemoveItem
+                    passed as props to InvoiceItemList. These are further passed
+                    to InvoiceItem. I am passing them from here so that I can update
+                    the state and simultaneously update the InvoiceTotals, which is
+                    a child of this component. */}
                     
                     <InvoiceItemList    
                         items={this.state.items}                 

@@ -66,7 +66,7 @@ const InvoiceItem = (props) => {
                         () => {
                             props.handleRemoveItem(props.id)
                         }
-                    }>X</span>
+                    }></span>
             </td>                
         </tr> 
     )
