@@ -36,7 +36,8 @@ class InvoiceItemList extends Component {
                     quantity={item.quantity}
                     price={item.price}
                     total={item.total}
-                    index={index}
+                    key={index}
+                    id={index}
                     handleUpdateItem={this.props.handleUpdateItem} />                    
             );
         });

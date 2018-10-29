@@ -23,11 +23,10 @@ class InvoiceItem extends Component {
                     <input 
                         type="number" 
                         className="item-quantity" 
-                        value={this.props.quantity} 
-                        index={this.props.index}                       
+                        value={this.props.quantity}
                         onChange={
                             (event) => {
-                                this.props.handleUpdateItem(this.props.index, event.target.value, this.props.price)
+                                this.props.handleUpdateItem(this.props.id, event.target.value, this.props.price)
                             }
 
                         }/>
@@ -36,11 +35,10 @@ class InvoiceItem extends Component {
                     <input 
                         type="number" 
                         className="item-price" 
-                        value={this.props.price}
-                        index={this.props.index}                        
+                        value={this.props.price}                        
                         onChange={
                             (event) => {
-                                this.props.handleUpdateItem(this.props.index, this.props.quantity, event.target.value)
+                                this.props.handleUpdateItem(this.props.id, this.props.quantity, event.target.value)
                             }
                         }
                     />
@@ -49,7 +47,6 @@ class InvoiceItem extends Component {
                     <input 
                         type="text" 
                         className="item-total"
-                        index={this.props.index}                        
                         value={this.props.total}                        
                         />
                 </td>                

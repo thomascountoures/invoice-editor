@@ -20,6 +20,11 @@ class InvoiceTable extends Component {
             }]            
         };
     }
+
+    roundTwoDecimals(number) {
+        return parseFloat(Math.round(number * 100) / 100).toFixed(2);
+    }
+
     render () {
         return (
             <table id="invoice-table" className="table table-dark">
@@ -42,18 +47,22 @@ class InvoiceTable extends Component {
                     items={this.state.items}                 
                     handleAddItem={items => this.setState({ items })}
                     handleUpdateItem={
-                        (index, quantity, price) => {
+                        (key, quantity, price) => {
                             let itemsClone = this.state.items,
-                                itemInQuestion = itemsClone[index];
+                                itemInQuestion = itemsClone[key];
                             
                             // update item
                             itemInQuestion.quantity = quantity;
                             itemInQuestion.price = price;
                             
+                            // keep numbers to two decimal places
+                            quantity = this.roundTwoDecimals(quantity);
+                            price = this.roundTwoDecimals(price);
+                            
                             // check if a valid number first. number needs to be greater than 0 as well,
                             // otherwise the answer is always 0.  
                             if( (!isNaN(price) && price > 0) && !isNaN(quantity) && quantity > 0) {
-                                itemInQuestion.total = Number(price) * Number(quantity);                                
+                                itemInQuestion.total = this.roundTwoDecimals(Number(quantity) * Number(price));
                             } else {
                                 // reset total value back to 0 if either price or quantity is 0
                                 itemInQuestion.total = 0;
@@ -68,7 +77,8 @@ class InvoiceTable extends Component {
                 row component. once the state is changed, totals will be automatically
                 updated, as per how cool react is */}
                 <InvoiceTotals 
-                    items={this.state.items} />
+                    items={this.state.items}
+                    roundTwoDecimals={this.roundTwoDecimals} />
  
             </table>    
         );
