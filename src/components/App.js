@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from '../assets/logo.svg';
 import '../css/App.css';
 
-class App extends React.Component {
+// thomas components
+import InvoiceTable from './invoice_table';
+import InvoiceTotals from './invoice_totals';
+
+// Create a new 'master' App component
+class App extends Component {
+  
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      itemInfo: {
+        itemName: '',
+        quantity: '',
+        price: '',
+        total: ''
+      }
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -10,10 +29,10 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to Invoice Editor</h2>
         </div>
-
+        
         { /* Insert your code here */}
-
-        <div>hello world</div>
+        <InvoiceTable 
+          onInputChange={itemInfo => this.setState({ itemInfo })}/>        
       </div>
     );
   }
